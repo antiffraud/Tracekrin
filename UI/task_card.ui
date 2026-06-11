@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TaskCard</class>
+ <widget class="QFrame" name="TaskCard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>550</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>550</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>550</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Kartu Tugas</string>
+  </property>
+  <property name="frameShape">
+   <enum>QFrame::Box</enum>
+  </property>
+  <property name="objectName">
+   <string>taskCard</string>
+  </property>
+  <property name="styleSheet">
+   <string>QFrame#taskCard {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 8px 0;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="main_layout">
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <property name="leftMargin">
+    <number>15</number>
+   </property>
+   <property name="topMargin">
+    <number>15</number>
+   </property>
+   <property name="rightMargin">
+    <number>15</number>
+   </property>
+   <property name="bottomMargin">
+    <number>15</number>
+   </property>
+   <item>
+    <!-- Header dengan judul dan status -->
+    <layout class="QHBoxLayout" name="header_layout">
+     <item>
+      <widget class="QLabel" name="title_label">
+       <property name="objectName">
+        <string>taskTitle</string>
+       </property>
+       <property name="text">
+        <string>Daftar To-Do</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLabel#taskTitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="header_spacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <!-- Label Status -->
+      <widget class="QLabel" name="status_label">
+       <property name="objectName">
+        <string>statusNotYet</string>
+       </property>
+       <property name="text">
+        <string>Belum Selesai</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLabel#statusFinished {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+QLabel#statusNotYet {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <!-- Konten Tugas -->
+    <widget class="QLabel" name="content_label">
+     <property name="objectName">
+      <string>taskContent</string>
+     </property>
+     <property name="text">
+      <string>Konten tugas akan ditampilkan di sini</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel#taskContent {
+    font-size: 13px;
+    color: #495057;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin: 4px 0;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Tampilan Waktu -->
+    <widget class="QLabel" name="time_label">
+     <property name="objectName">
+      <string>taskTime</string>
+     </property>
+     <property name="text">
+      <string>09:00 - 10:00</string>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel#taskTime {
+    font-size: 12px;
+    color: #6c757d;
+    background-color: #f8f9fa;
+    padding: 6px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Layout Tombol -->
+    <layout class="QHBoxLayout" name="button_layout">
+     <item>
+      <widget class="QPushButton" name="done_button">
+       <property name="objectName">
+        <string>doneButton</string>
+       </property>
+       <property name="text">
+        <string>Selesai</string>
+       </property>
+       <property name="styleSheet">
+        <string>QPushButton#doneButton {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+QPushButton#doneButton:hover {
+    background-color: #218838;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="decline_button">
+       <property name="objectName">
+        <string>declineButton</string>
+       </property>
+       <property name="text">
+        <string>Tolak</string>
+       </property>
+       <property name="styleSheet">
+        <string>QPushButton#declineButton {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+QPushButton#declineButton:hover {
+    background-color: #c82333;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="button_spacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

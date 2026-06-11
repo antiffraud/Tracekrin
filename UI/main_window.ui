@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Trackerin - To-Do Activity Tracker</string>
+  </property>
+  <property name="styleSheet">
+   <string>QMainWindow {
+    background-color: #f8f9fa;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="main_layout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <!-- Header Widget - Bagian atas dengan navigasi dan profil pengguna -->
+     <widget class="QWidget" name="header_widget">
+      <property name="objectName">
+       <string>headerWidget</string>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string>QWidget#headerWidget {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+}</string>
+      </property>
+      <layout class="QHBoxLayout" name="header_layout">
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
+       <item>
+        <!-- Logo dan Navigasi -->
+        <layout class="QHBoxLayout" name="left_section">
+         <item>
+          <!-- Ikon Logo -->
+          <widget class="QLabel" name="logo_icon">
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>📋</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="styleSheet">
+            <string>font-size: 32px;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="logo_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <!-- Tombol Navigasi -->
+          <layout class="QHBoxLayout" name="nav_layout">
+           <property name="spacing">
+            <number>5</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="schedule_button">
+             <property name="objectName">
+              <string>navButton</string>
+             </property>
+             <property name="text">
+              <string>📅 Jadwal</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="styleSheet">
+              <string>QPushButton#navButton {
+    background-color: transparent;
+    border: none;
+    color: #6c757d;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    min-width: 100px;
+    text-align: left;
+}
+
+QPushButton#navButton:hover {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+}
+
+QPushButton#navButton:checked {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+QPushButton#navButton:pressed {
+    background-color: #0056b3;
+    color: #ffffff;
+}</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="export_button">
+             <property name="objectName">
+              <string>navButton</string>
+             </property>
+             <property name="text">
+              <string>📊 Ekspor</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="profile_button">
+             <property name="objectName">
+              <string>navButton</string>
+             </property>
+             <property name="text">
+              <string>👤 Profil</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="header_spacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <!-- Informasi Pengguna -->
+        <layout class="QHBoxLayout" name="user_info_layout">
+         <item>
+          <widget class="QLabel" name="header_profile_pic">
+           <property name="objectName">
+            <string>profilePic</string>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>👤</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="styleSheet">
+            <string>QLabel {
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 20px;
+}</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="user_label">
+           <property name="objectName">
+            <string>userLabel</string>
+           </property>
+           <property name="text">
+            <string>Muhamad Erwin Hariadinata
+Student</string>
+           </property>
+           <property name="styleSheet">
+            <string>QLabel {
+    color: #2c3e50;
+    font-size: 12px;
+    margin-left: 10px;
+}</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <!-- Widget Bertumpuk untuk Halaman -->
+     <widget class="QStackedWidget" name="stacked_widget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="schedule_page_placeholder">
+       <layout class="QVBoxLayout" name="schedule_placeholder_layout">
+        <item>
+         <widget class="QLabel" name="schedule_placeholder_label">
+          <property name="text">
+           <string>Halaman Jadwal akan dimuat di sini</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="export_page_placeholder">
+       <layout class="QVBoxLayout" name="export_placeholder_layout">
+        <item>
+         <widget class="QLabel" name="export_placeholder_label">
+          <property name="text">
+           <string>Halaman Ekspor akan dimuat di sini</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="profile_page_placeholder">
+       <layout class="QVBoxLayout" name="profile_placeholder_layout">
+        <item>
+         <widget class="QLabel" name="profile_placeholder_label">
+          <property name="text">
+           <string>Halaman Profil akan dimuat di sini</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <!-- Menu Bar - Bar menu dengan berbagai aksi -->
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="file_menu">
+    <property name="title">
+     <string>Berkas</string>
+    </property>
+    <addaction name="new_task_action"/>
+    <addaction name="separator"/>
+    <addaction name="export_action"/>
+    <addaction name="separator"/>
+    <addaction name="exit_action"/>
+   </widget>
+   <widget class="QMenu" name="edit_menu">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="paste_action"/>
+   </widget>
+   <widget class="QMenu" name="view_menu">
+    <property name="title">
+     <string>Tampilan</string>
+    </property>
+    <addaction name="toggle_profile_dock_action"/>
+   </widget>
+   <widget class="QMenu" name="help_menu">
+    <property name="title">
+     <string>Bantuan</string>
+    </property>
+    <addaction name="about_action"/>
+    <addaction name="separator"/>
+    <addaction name="user_guide_action"/>
+   </widget>
+   <addaction name="file_menu"/>
+   <addaction name="edit_menu"/>
+   <addaction name="view_menu"/>
+   <addaction name="help_menu"/>
+  </widget>
+  <!-- Status Bar - Bar status dengan informasi pengguna -->
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string>QStatusBar {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 5px 15px;
+    font-size: 12px;
+    max-height: 25px;
+    min-height: 25px;
+}
+QStatusBar::item {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+QStatusBar QLabel {
+    color: #ffffff;
+    font-size: 12px;
+    margin: 0px;
+    padding: 2px 5px;
+}</string>
+   </property>
+  </widget>
+  <!-- Aksi Menu -->
+  <action name="new_task_action">
+   <property name="text">
+    <string>Tugas Baru</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="export_action">
+   <property name="text">
+    <string>Ekspor ke CSV</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="exit_action">
+   <property name="text">
+    <string>Keluar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="paste_action">
+   <property name="text">
+    <string>Tempel dari Clipboard</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="toggle_profile_dock_action">
+   <property name="text">
+    <string>Toggle Dok Profil</string>
+   </property>
+  </action>
+  <action name="about_action">
+   <property name="text">
+    <string>Informasi Aplikasi</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="user_guide_action">
+   <property name="text">
+    <string>Panduan Pengguna</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

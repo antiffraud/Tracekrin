@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SchedulePage</class>
+ <widget class="QWidget" name="SchedulePage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1040</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Halaman Jadwal</string>
+  </property>
+  <layout class="QHBoxLayout" name="main_layout">
+   <property name="spacing">
+    <number>20</number>
+   </property>
+   <property name="leftMargin">
+    <number>15</number>
+   </property>
+   <property name="topMargin">
+    <number>15</number>
+   </property>
+   <property name="rightMargin">
+    <number>15</number>
+   </property>
+   <property name="bottomMargin">
+    <number>15</number>
+   </property>
+   <item>
+    <!-- Sisi Kiri - Tugas dan Pemilih Hari -->
+    <widget class="QWidget" name="left_widget">
+     <property name="minimumSize">
+      <size>
+       <width>620</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>620</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="left_layout">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <!-- Judul Halaman -->
+       <widget class="QLabel" name="title_label">
+        <property name="text">
+         <string>Pelacak Aktivitas Daftar Tugas</string>
+        </property>
+        <property name="styleSheet">
+         <string>QLabel {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <!-- Pemilih Hari -->
+       <widget class="QScrollArea" name="day_scroll_area">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>70</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>70</height>
+         </size>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="day_container">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>598</width>
+           <height>68</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="day_layout">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <!-- Tombol hari akan ditambahkan secara dinamis di kode Python -->
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <!-- Label Hari Saat Ini -->
+       <widget class="QLabel" name="current_day_label">
+        <property name="text">
+         <string>Hari Ini, Des 21</string>
+        </property>
+        <property name="styleSheet">
+         <string>QLabel {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 10px 0;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <!-- Area Scroll Tugas -->
+       <widget class="QScrollArea" name="task_scroll_area">
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="task_container">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>598</width>
+           <height>69</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="task_layout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <!-- Kartu tugas akan ditambahkan secara dinamis di kode Python -->
+           <spacer name="task_spacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <!-- Sisi Kanan - Kalender dan Form -->
+    <widget class="QWidget" name="right_widget">
+     <property name="minimumSize">
+      <size>
+       <width>420</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>420</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="right_layout">
+      <property name="spacing">
+       <number>15</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <!-- Widget Kalender -->
+       <widget class="QCalendarWidget" name="calendar">
+        <property name="minimumSize">
+         <size>
+          <width>420</width>
+          <height>280</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>420</width>
+          <height>280</height>
+         </size>
+        </property>
+        <property name="verticalHeaderFormat">
+         <enum>QCalendarWidget::NoVerticalHeader</enum>
+        </property>
+        <property name="styleSheet">
+         <string>QCalendarWidget {
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+QCalendarWidget QToolButton {
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+}
+
+QCalendarWidget QToolButton:hover {
+    background-color: #0056b3;
+    border-radius: 4px;
+}
+
+QCalendarWidget QMenu {
+    background-color: #007bff;
+    color: #ffffff;
+    border: 1px solid #0056b3;
+}
+
+QCalendarWidget QSpinBox {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 2px;
+}
+
+QCalendarWidget QAbstractItemView {
+    background-color: #007bff;
+    color: #ffffff;
+    selection-background-color: #0056b3;
+    outline: none;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <!-- Area Scroll Form -->
+       <widget class="QScrollArea" name="form_scroll_area">
+        <property name="minimumSize">
+         <size>
+          <width>420</width>
+          <height>360</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>420</width>
+          <height>360</height>
+         </size>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string>QScrollArea {
+    border: none;
+    background-color: transparent;
+}</string>
+        </property>
+        <widget class="QWidget" name="form_container">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>418</width>
+           <height>358</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="form_container_layout">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>30</number>
+          </property>
+          <item>
+           <!-- Widget Form -->
+           <widget class="QWidget" name="form_widget">
+            <property name="styleSheet">
+             <string>QWidget {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin: 5px;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="form_layout">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="topMargin">
+              <number>15</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <property name="bottomMargin">
+              <number>15</number>
+             </property>
+             <item>
+              <!-- Judul Form -->
+              <widget class="QLabel" name="form_title_label">
+               <property name="text">
+                <string>Form To-Do</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="styleSheet">
+                <string>QLabel {
+    font-size: 16px;
+    font-weight: 600;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 8px;
+    background-color: transparent;
+    border: none;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <!-- Tanggal Mulai -->
+              <widget class="QLabel" name="start_date_label">
+               <property name="text">
+                <string>Tanggal Mulai</string>
+               </property>
+               <property name="styleSheet">
+                <string>QLabel {
+    color: #495057; 
+    font-size: 13px; 
+    font-weight: 500; 
+    margin-bottom: 2px;
+    background-color: transparent;
+    border: none;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="start_date_edit">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="styleSheet">
+                <string>QDateEdit {
+    padding: 8px 25px 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 13px;
+    background-color: #ffffff;
+    color: #495057;
+    min-height: 16px;
+}
+QDateEdit:focus { 
+    border-color: #80bdff; 
+    background-color: #ffffff;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <!-- Tanggal Berakhir -->
+              <widget class="QLabel" name="end_date_label">
+               <property name="text">
+                <string>Tanggal Berakhir</string>
+               </property>
+               <property name="styleSheet">
+                <string>QLabel {
+    color: #495057; 
+    font-size: 13px; 
+    font-weight: 500; 
+    margin-bottom: 2px;
+    background-color: transparent;
+    border: none;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="end_date_edit">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="styleSheet">
+                <string>QDateEdit {
+    padding: 8px 25px 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 13px;
+    background-color: #ffffff;
+    color: #495057;
+    min-height: 16px;
+}
+QDateEdit:focus { 
+    border-color: #80bdff; 
+    background-color: #ffffff;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <!-- Waktu Mulai -->
+              <widget class="QLabel" name="start_time_label">
+               <property name="text">
+                <string>Waktu Mulai</string>
+               </property>
+               <property name="styleSheet">
+                <string>QLabel {
+    color: #495057; 
+    font-size: 13px; 
+    font-weight: 500; 
+    margin-bottom: 2px;
+    background-color: transparent;
+    border: none;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTimeEdit" name="start_time_edit">
+               <property name="displayFormat">
+                <string>hh:mm AP</string>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="styleSheet">
+                <string>QTimeEdit {
+    padding: 8px 25px 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 13px;
+    background-color: #ffffff;
+    color: #495057;
+    min-height: 16px;
+}
+QTimeEdit:focus { 
+    border-color: #80bdff; 
+    background-color: #ffffff;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <!-- Waktu Berakhir -->
+              <widget class="QLabel" name="end_time_label">
+               <property name="text">
+                <string>Waktu Berakhir</string>
+               </property>
+               <property name="styleSheet">
+                <string>QLabel {
+    color: #495057; 
+    font-size: 13px; 
+    font-weight: 500; 
+    margin-bottom: 2px;
+    background-color: transparent;
+    border: none;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTimeEdit" name="end_time_edit">
+               <property name="displayFormat">
+                <string>hh:mm AP</string>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="styleSheet">
+                <string>QTimeEdit {
+    padding: 8px 25px 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 13px;
+    background-color: #ffffff;
+    color: #495057;
+    min-height: 16px;
+}
+QTimeEdit:focus { 
+    border-color: #80bdff; 
+    background-color: #ffffff;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <!-- Input Aktivitas -->
+              <widget class="QLabel" name="activity_label">
+               <property name="text">
+                <string>Input Aktivitas</string>
+               </property>
+               <property name="styleSheet">
+                <string>QLabel {
+    color: #495057; 
+    font-size: 13px; 
+    font-weight: 500; 
+    margin-bottom: 2px;
+    background-color: transparent;
+    border: none;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="activity_input">
+               <property name="placeholderText">
+                <string>Masukkan Aktivitas To-Do</string>
+               </property>
+               <property name="styleSheet">
+                <string>QLineEdit {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 13px;
+    background-color: #ffffff;
+    color: #495057;
+    min-height: 16px;
+}
+QLineEdit:focus { 
+    border-color: #80bdff; 
+    background-color: #ffffff;
+}
+QLineEdit::placeholder { 
+    color: #adb5bd; 
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <!-- Tombol Submit -->
+              <widget class="QPushButton" name="submit_button">
+               <property name="text">
+                <string>Kirim</string>
+               </property>
+               <property name="styleSheet">
+                <string>QPushButton {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+    min-height: 16px;
+}
+QPushButton:hover {
+    background-color: #1e40af;
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="form_bottom_spacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Fixed</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

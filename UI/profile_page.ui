@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProfilePage</class>
+ <widget class="QWidget" name="ProfilePage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Halaman Profil</string>
+  </property>
+  <layout class="QVBoxLayout" name="main_layout">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>15</number>
+   </property>
+   <property name="topMargin">
+    <number>15</number>
+   </property>
+   <property name="rightMargin">
+    <number>15</number>
+   </property>
+   <property name="bottomMargin">
+    <number>15</number>
+   </property>
+   <item>
+    <!-- Judul Riwayat Aktivitas -->
+    <widget class="QLabel" name="title_label">
+     <property name="text">
+      <string>Riwayat Aktivitas</string>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Bagian Pencarian dan Filter -->
+    <layout class="QHBoxLayout" name="search_layout">
+     <item>
+      <!-- Tombol Filter -->
+      <widget class="QPushButton" name="filter_button">
+       <property name="text">
+        <string>🔽 Filter</string>
+       </property>
+       <property name="styleSheet">
+        <string>QPushButton {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 16px;
+    color: #2c3e50;
+}
+QPushButton:hover {
+    background-color: #e9ecef;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <!-- Kotak Pencarian -->
+      <widget class="QLineEdit" name="search_input">
+       <property name="objectName">
+        <string>searchBox</string>
+       </property>
+       <property name="placeholderText">
+        <string>Cari Pengguna berdasarkan Nama, Email atau Tanggal (Ctrl+V untuk tempel)</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLineEdit#searchBox {
+    background-color: #ffffff;
+    border: 2px solid #dee2e6;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #2c3e50;
+    min-width: 300px;
+}
+QLineEdit#searchBox:focus {
+    border-color: #007bff;
+}
+QLineEdit#searchBox::placeholder {
+    color: #6c757d;
+    font-style: italic;
+}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <!-- Tabel Aktivitas -->
+    <widget class="QTableWidget" name="activity_table">
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="columnCount">
+      <number>7</number>
+     </property>
+     <property name="styleSheet">
+      <string>QTableWidget {
+    gridline-color: #dee2e6;
+    background-color: #ffffff;
+    alternate-background-color: #f8f9fa;
+    border: none;
+    font-size: 12pt;
+}
+QTableWidget::item {
+    padding: 10px 8px;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 12pt;
+}
+QTableWidget::item:selected {
+    background-color: #007bff;
+    color: white;
+}
+QTableWidget QHeaderView { 
+    background-color: #e9ecef;
+    font-size: 12pt;
+}
+QTableWidget QHeaderView::section { 
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 12px 15px; 
+    border: 1px solid #dee2e6; 
+    font-weight: bold;
+    font-size: 12pt;
+    min-height: 40px;
+    text-align: center;
+}
+QTableWidget QHeaderView::section:hover {
+    background-color: #dee2e6;
+}
+QTableWidget QHeaderView::section:pressed {
+    background-color: #ced4da;
+}
+QTableWidget QTableCornerButton::section {
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+}</string>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Tanggal</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Aktivitas</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Waktu Mulai</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Waktu Berakhir</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Durasi</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Status</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Aksi</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <!-- Label Paginasi -->
+    <widget class="QLabel" name="pagination_label">
+     <property name="text">
+      <string>1-10 dari 276</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel {
+    color: #6c757d; 
+    font-size: 12px;
+}</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

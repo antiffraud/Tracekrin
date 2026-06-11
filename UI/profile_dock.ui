@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProfileDock</class>
+ <widget class="QWidget" name="ProfileDock">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>320</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>280</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>350</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dok Profil</string>
+  </property>
+  <property name="styleSheet">
+   <string>QWidget {
+    background-color: #ffffff;
+    color: #2c3e50;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="dock_layout">
+   <property name="spacing">
+    <number>15</number>
+   </property>
+   <property name="leftMargin">
+    <number>15</number>
+   </property>
+   <property name="topMargin">
+    <number>15</number>
+   </property>
+   <property name="rightMargin">
+    <number>15</number>
+   </property>
+   <property name="bottomMargin">
+    <number>15</number>
+   </property>
+   <item>
+    <!-- Bagian Tampilan Profil -->
+    <widget class="QLabel" name="profile_view_label">
+     <property name="text">
+      <string>Tampilan Profil</string>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel {
+    font-weight: bold; 
+    font-size: 14px; 
+    color: #2c3e50; 
+    margin-bottom: 8px; 
+    padding: 2px 0;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Layout Foto Profil -->
+    <layout class="QHBoxLayout" name="pic_layout">
+     <item>
+      <spacer name="pic_left_spacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <!-- Frame Foto Profil -->
+      <widget class="QLabel" name="profile_pic_frame">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>👤</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="styleSheet">
+        <string>QLabel {
+    background-color: #495057;
+    border-radius: 50px;
+    border: 2px solid #dee2e6;
+    color: white;
+    font-size: 48px;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="pic_right_spacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <!-- Nama Profil -->
+    <widget class="QLabel" name="name_label">
+     <property name="text">
+      <string>Muhamad Erwin Hariadinata</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 10px 0;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Tombol Ubah Profil -->
+    <widget class="QPushButton" name="change_profile_btn">
+     <property name="text">
+      <string>Ubah Profil</string>
+     </property>
+     <property name="styleSheet">
+      <string>QPushButton {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 16px;
+    color: #2c3e50;
+}
+QPushButton:hover {
+    background-color: #e9ecef;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Garis Pemisah -->
+    <widget class="QLabel" name="separator">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>1</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>1</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel {
+    background-color: #dee2e6; 
+    margin: 10px 0;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Bagian Set Profil Saya -->
+    <widget class="QLabel" name="profile_form_label">
+     <property name="text">
+      <string>Atur Profil Saya</string>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel {
+    font-weight: bold; 
+    font-size: 14px; 
+    color: #2c3e50; 
+    margin-bottom: 8px; 
+    padding: 2px 0;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Nama Lengkap -->
+    <layout class="QVBoxLayout" name="name_layout">
+     <item>
+      <widget class="QLabel" name="name_input_label">
+       <property name="text">
+        <string>Nama Lengkap</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLabel {
+    color: #2c3e50; 
+    font-size: 12px; 
+    font-weight: 500;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="name_input">
+       <property name="placeholderText">
+        <string>Masukkan nama lengkap Anda (Ctrl+V untuk tempel)</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLineEdit {
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    font-size: 14px;
+}
+QLineEdit:focus {
+    border-color: #007bff;
+}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <!-- Email -->
+    <layout class="QVBoxLayout" name="email_layout">
+     <item>
+      <widget class="QLabel" name="email_input_label">
+       <property name="text">
+        <string>Email</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLabel {
+    color: #2c3e50; 
+    font-size: 12px; 
+    font-weight: 500;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="email_input">
+       <property name="placeholderText">
+        <string>Masukkan email Anda (Ctrl+V untuk tempel)</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLineEdit {
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    font-size: 14px;
+}
+QLineEdit:focus {
+    border-color: #007bff;
+}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <!-- ID Mahasiswa -->
+    <layout class="QVBoxLayout" name="id_layout">
+     <item>
+      <widget class="QLabel" name="id_input_label">
+       <property name="text">
+        <string>ID Mahasiswa</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLabel {
+    color: #2c3e50; 
+    font-size: 12px; 
+    font-weight: 500;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="id_input">
+       <property name="placeholderText">
+        <string>Masukkan ID mahasiswa Anda (Ctrl+V untuk tempel)</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLineEdit {
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    font-size: 14px;
+}
+QLineEdit:focus {
+    border-color: #007bff;
+}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <!-- Jenis Status -->
+    <layout class="QVBoxLayout" name="status_layout">
+     <item>
+      <widget class="QLabel" name="status_input_label">
+       <property name="text">
+        <string>Jenis Status</string>
+       </property>
+       <property name="styleSheet">
+        <string>QLabel {
+    color: #2c3e50; 
+    font-size: 12px; 
+    font-weight: 500;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="status_combo">
+       <property name="styleSheet">
+        <string>QComboBox {
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    font-size: 14px;
+    min-height: 20px;
+    padding-right: 25px;
+}
+QComboBox:focus {
+    border-color: #007bff;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+}
+QComboBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #6c757d;
+    width: 0px;
+    height: 0px;
+}
+QComboBox::down-arrow:hover {
+    border-top-color: #495057;
+}
+QComboBox QAbstractItemView {
+    border: 1px solid #dee2e6;
+    background-color: #ffffff;
+    selection-background-color: #007bff;
+    selection-color: #ffffff;
+}</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Mahasiswa</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Guru</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Staf</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Lainnya</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <!-- Tombol Submit -->
+    <widget class="QPushButton" name="submit_button">
+     <property name="text">
+      <string>Kirim</string>
+     </property>
+     <property name="styleSheet">
+      <string>QPushButton {
+    background-color: #007bff;
+    color: #ffffff;
+    border: 2px solid #007bff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 120px;
+    min-height: 20px;
+}
+QPushButton:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+QPushButton:pressed {
+    background-color: #004085;
+    border-color: #004085;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Spacer untuk mengisi ruang yang tersisa -->
+    <spacer name="bottom_spacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>report</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#laporan-proyek-aplikasi-trackerin"
+id="toc-laporan-proyek-aplikasi-trackerin"><span
+class="toc-section-number">1</span> LAPORAN PROYEK APLIKASI
+TRACKERIN</a>
+<ul>
+<li><a href="#to-do-activity-tracker-dengan-pyqt6"
+id="toc-to-do-activity-tracker-dengan-pyqt6"><span
+class="toc-section-number">1.1</span> To-Do Activity Tracker dengan
+PyQt6</a></li>
+<li><a href="#daftar-isi" id="toc-daftar-isi"><span
+class="toc-section-number">1.2</span> 📋 DAFTAR ISI</a></li>
+<li><a href="#deskripsi-aplikasi" id="toc-deskripsi-aplikasi"><span
+class="toc-section-number">1.3</span> 1. DESKRIPSI APLIKASI</a>
+<ul>
+<li><a href="#overview-aplikasi" id="toc-overview-aplikasi"><span
+class="toc-section-number">1.3.1</span> 1.1 Overview Aplikasi</a></li>
+<li><a href="#tujuan-pembuatan" id="toc-tujuan-pembuatan"><span
+class="toc-section-number">1.3.2</span> 1.2 Tujuan Pembuatan</a></li>
+<li><a href="#fitur-utama" id="toc-fitur-utama"><span
+class="toc-section-number">1.3.3</span> 1.3 Fitur Utama</a></li>
+</ul></li>
+<li><a href="#langkah-langkah-pembuatan-proyek"
+id="toc-langkah-langkah-pembuatan-proyek"><span
+class="toc-section-number">1.4</span> 2. LANGKAH-LANGKAH PEMBUATAN
+PROYEK</a>
+<ul>
+<li><a href="#planning-dan-design-phase"
+id="toc-planning-dan-design-phase"><span
+class="toc-section-number">1.4.1</span> 2.1 Planning dan Design
+Phase</a></li>
+<li><a href="#development-phase" id="toc-development-phase"><span
+class="toc-section-number">1.4.2</span> 2.2 Development Phase</a></li>
+<li><a href="#integration-dan-testing-phase"
+id="toc-integration-dan-testing-phase"><span
+class="toc-section-number">1.4.3</span> 2.3 Integration dan Testing
+Phase</a></li>
+</ul></li>
+<li><a href="#penjelasan-fungsi-utama"
+id="toc-penjelasan-fungsi-utama"><span
+class="toc-section-number">1.5</span> 3. PENJELASAN FUNGSI UTAMA</a>
+<ul>
+<li><a href="#database-management-functions"
+id="toc-database-management-functions"><span
+class="toc-section-number">1.5.1</span> 3.1 Database Management
+Functions</a></li>
+<li><a href="#user-interface-management-functions"
+id="toc-user-interface-management-functions"><span
+class="toc-section-number">1.5.2</span> 3.2 User Interface Management
+Functions</a></li>
+<li><a href="#task-management-functions"
+id="toc-task-management-functions"><span
+class="toc-section-number">1.5.3</span> 3.3 Task Management
+Functions</a></li>
+<li><a href="#profile-management-functions"
+id="toc-profile-management-functions"><span
+class="toc-section-number">1.5.4</span> 3.4 Profile Management
+Functions</a></li>
+<li><a href="#export-dan-reporting-functions"
+id="toc-export-dan-reporting-functions"><span
+class="toc-section-number">1.5.5</span> 3.5 Export dan Reporting
+Functions</a></li>
+</ul></li>
+<li><a href="#arsitektur-dan-komponen"
+id="toc-arsitektur-dan-komponen"><span
+class="toc-section-number">1.6</span> 4. ARSITEKTUR DAN KOMPONEN</a>
+<ul>
+<li><a href="#application-architecture"
+id="toc-application-architecture"><span
+class="toc-section-number">1.6.1</span> 4.1 Application
+Architecture</a></li>
+<li><a href="#component-hierarchy" id="toc-component-hierarchy"><span
+class="toc-section-number">1.6.2</span> 4.2 Component Hierarchy</a></li>
+<li><a href="#data-flow-architecture"
+id="toc-data-flow-architecture"><span
+class="toc-section-number">1.6.3</span> 4.3 Data Flow
+Architecture</a></li>
+<li><a href="#pyqt6-components-integration"
+id="toc-pyqt6-components-integration"><span
+class="toc-section-number">1.6.4</span> 4.4 PyQt6 Components
+Integration</a></li>
+</ul></li>
+<li><a href="#interface-dan-fungsionalitas"
+id="toc-interface-dan-fungsionalitas"><span
+class="toc-section-number">1.7</span> 5. INTERFACE DAN
+FUNGSIONALITAS</a>
+<ul>
+<li><a href="#main-window-interface"
+id="toc-main-window-interface"><span
+class="toc-section-number">1.7.1</span> 5.1 Main Window
+Interface</a></li>
+<li><a href="#schedule-page-interface"
+id="toc-schedule-page-interface"><span
+class="toc-section-number">1.7.2</span> 5.2 Schedule Page
+Interface</a></li>
+<li><a href="#profile-page-interface"
+id="toc-profile-page-interface"><span
+class="toc-section-number">1.7.3</span> 5.3 Profile Page
+Interface</a></li>
+<li><a href="#export-page-interface"
+id="toc-export-page-interface"><span
+class="toc-section-number">1.7.4</span> 5.4 Export Page
+Interface</a></li>
+<li><a href="#interactive-features" id="toc-interactive-features"><span
+class="toc-section-number">1.7.5</span> 5.5 Interactive
+Features</a></li>
+</ul></li>
+<li><a href="#implementasi-database"
+id="toc-implementasi-database"><span
+class="toc-section-number">1.8</span> 6. IMPLEMENTASI DATABASE</a>
+<ul>
+<li><a href="#database-schema-design"
+id="toc-database-schema-design"><span
+class="toc-section-number">1.8.1</span> 6.1 Database Schema
+Design</a></li>
+<li><a href="#crud-operations-implementation"
+id="toc-crud-operations-implementation"><span
+class="toc-section-number">1.8.2</span> 6.2 CRUD Operations
+Implementation</a></li>
+<li><a href="#database-connection-management"
+id="toc-database-connection-management"><span
+class="toc-section-number">1.8.3</span> 6.3 Database Connection
+Management</a></li>
+<li><a href="#data-validation-dan-integrity"
+id="toc-data-validation-dan-integrity"><span
+class="toc-section-number">1.8.4</span> 6.4 Data Validation dan
+Integrity</a></li>
+</ul></li>
+<li><a href="#styling-dan-user-experience"
+id="toc-styling-dan-user-experience"><span
+class="toc-section-number">1.9</span> 7. STYLING DAN USER EXPERIENCE</a>
+<ul>
+<li><a href="#design-system" id="toc-design-system"><span
+class="toc-section-number">1.9.1</span> 7.1 Design System</a></li>
+<li><a href="#component-styling" id="toc-component-styling"><span
+class="toc-section-number">1.9.2</span> 7.2 Component Styling</a></li>
+<li><a href="#responsive-design" id="toc-responsive-design"><span
+class="toc-section-number">1.9.3</span> 7.3 Responsive Design</a></li>
+<li><a href="#user-experience-enhancements"
+id="toc-user-experience-enhancements"><span
+class="toc-section-number">1.9.4</span> 7.4 User Experience
+Enhancements</a></li>
+</ul></li>
+<li><a href="#testing-dan-debugging"
+id="toc-testing-dan-debugging"><span
+class="toc-section-number">1.10</span> 8. TESTING DAN DEBUGGING</a>
+<ul>
+<li><a href="#testing-strategy" id="toc-testing-strategy"><span
+class="toc-section-number">1.10.1</span> 8.1 Testing Strategy</a></li>
+<li><a href="#error-handling-implementation"
+id="toc-error-handling-implementation"><span
+class="toc-section-number">1.10.2</span> 8.2 Error Handling
+Implementation</a></li>
+<li><a href="#debugging-tools-dan-techniques"
+id="toc-debugging-tools-dan-techniques"><span
+class="toc-section-number">1.10.3</span> 8.3 Debugging Tools dan
+Techniques</a></li>
+<li><a href="#common-issues-dan-solutions"
+id="toc-common-issues-dan-solutions"><span
+class="toc-section-number">1.10.4</span> 8.4 Common Issues dan
+Solutions</a></li>
+</ul></li>
+<li><a href="#kesimpulan-dan-future-development"
+id="toc-kesimpulan-dan-future-development"><span
+class="toc-section-number">1.11</span> 9. KESIMPULAN DAN FUTURE
+DEVELOPMENT</a>
+<ul>
+<li><a href="#project-summary" id="toc-project-summary"><span
+class="toc-section-number">1.11.1</span> 9.1 Project Summary</a></li>
+<li><a href="#lessons-learned" id="toc-lessons-learned"><span
+class="toc-section-number">1.11.2</span> 9.2 Lessons Learned</a></li>
+<li><a href="#future-development-roadmap"
+id="toc-future-development-roadmap"><span
+class="toc-section-number">1.11.3</span> 9.3 Future Development
+Roadmap</a></li>
+<li><a href="#performance-optimization-opportunities"
+id="toc-performance-optimization-opportunities"><span
+class="toc-section-number">1.11.4</span> 9.4 Performance Optimization
+Opportunities</a></li>
+<li><a href="#final-recommendations"
+id="toc-final-recommendations"><span
+class="toc-section-number">1.11.5</span> 9.5 Final
+Recommendations</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 data-number="1" id="laporan-proyek-aplikasi-trackerin"><span
+class="header-section-number">1</span> LAPORAN PROYEK APLIKASI
+TRACKERIN</h1>
+<h2 data-number="1.1" id="to-do-activity-tracker-dengan-pyqt6"><span
+class="header-section-number">1.1</span> To-Do Activity Tracker dengan
+PyQt6</h2>
+<hr />
+<p><strong>Nama Aplikasi:</strong> Trackerin - To-Do Activity
+Tracker<br />
+<strong>Framework:</strong> PyQt6<br />
+<strong>Database:</strong> SQLite<br />
+<strong>Bahasa Pemrograman:</strong> Python 3.8+<br />
+<strong>Platform:</strong> Cross-platform (Windows, macOS, Linux)</p>
+<p><strong>Tanggal Pembuatan:</strong> 2025<br />
+<strong>Developer:</strong> Muhamad Erwin Hariadinata | F1D022065</p>
+<hr />
+<h2 data-number="1.2" id="daftar-isi"><span
+class="header-section-number">1.2</span> 📋 DAFTAR ISI</h2>
+<ol type="1">
+<li><a href="#1-deskripsi-aplikasi">Deskripsi Aplikasi</a></li>
+<li><a href="#2-langkah-langkah-pembuatan-proyek">Langkah-langkah
+Pembuatan Proyek</a></li>
+<li><a href="#3-penjelasan-fungsi-utama">Penjelasan Fungsi
+Utama</a></li>
+<li><a href="#4-arsitektur-dan-komponen">Arsitektur dan
+Komponen</a></li>
+<li><a href="#5-interface-dan-fungsionalitas">Interface dan
+Fungsionalitas</a></li>
+<li><a href="#6-implementasi-database">Implementasi Database</a></li>
+<li><a href="#7-styling-dan-user-experience">Styling dan User
+Experience</a></li>
+<li><a href="#8-testing-dan-debugging">Testing dan Debugging</a></li>
+<li><a href="#9-kesimpulan-dan-future-development">Kesimpulan dan Future
+Development</a></li>
+</ol>
+<hr />
+<h2 data-number="1.3" id="deskripsi-aplikasi"><span
+class="header-section-number">1.3</span> 1. DESKRIPSI APLIKASI</h2>
+<h3 data-number="1.3.1" id="overview-aplikasi"><span
+class="header-section-number">1.3.1</span> 1.1 Overview Aplikasi</h3>
+<p>Trackerin adalah aplikasi desktop modern yang dirancang untuk
+membantu pengguna dalam mengelola aktivitas dan tugas harian mereka.
+Aplikasi ini dibangun menggunakan PyQt6 framework untuk memberikan
+pengalaman user interface yang intuitif dan responsif.</p>
+<h3 data-number="1.3.2" id="tujuan-pembuatan"><span
+class="header-section-number">1.3.2</span> 1.2 Tujuan Pembuatan</h3>
+<p><strong>Primary Goals:</strong> - Menyediakan platform terpusat untuk
+task management - Meningkatkan produktivitas pengguna dengan interface
+yang user-friendly - Memberikan fitur tracking dan reporting yang
+comprehensive - Mendukung workflow harian dengan integrasi calendar</p>
+<p><strong>Target Users:</strong> - Students untuk mengatur jadwal
+belajar dan tugas - Professionals untuk mengelola project dan deadline -
+Individuals yang ingin meningkatkan personal productivity</p>
+<h3 data-number="1.3.3" id="fitur-utama"><span
+class="header-section-number">1.3.3</span> 1.3 Fitur Utama</h3>
+<p><strong>📅 Schedule Management</strong> - Task creation dengan date
+dan time scheduling - Visual calendar integration untuk date selection -
+Day selector untuk quick navigation - Status tracking (Not
+Yet/Finished)</p>
+<p><strong>👤 Profile Management</strong> - User profile dengan photo
+upload - Personal information management - Activity history tracking -
+Search dan filter capabilities</p>
+<p><strong>📊 Data Export &amp; Analytics</strong> - CSV export
+functionality - Data preview dengan statistics - Duration calculation
+otomatis - Comprehensive reporting</p>
+<p><strong>🎨 Modern User Interface</strong> - Clean dan professional
+design - Custom navigation icons - Responsive layout design - Dock
+widgets untuk advanced features</p>
+<hr />
+<h2 data-number="1.4" id="langkah-langkah-pembuatan-proyek"><span
+class="header-section-number">1.4</span> 2. LANGKAH-LANGKAH PEMBUATAN
+PROYEK</h2>
+<h3 data-number="1.4.1" id="planning-dan-design-phase"><span
+class="header-section-number">1.4.1</span> 2.1 Planning dan Design
+Phase</h3>
+<p><strong>Step 1: Requirements Analysis</strong></p>
+<pre><code>Analisis kebutuhan user:
+- Task management dengan scheduling
+- User profile management
+- Data export capabilities
+- Cross-platform compatibility</code></pre>
+<p><strong>Step 2: Technology Stack Selection</strong></p>
+<pre><code>Framework: PyQt6 (untuk modern GUI development)
+Database: SQLite (lightweight, embedded database)
+Architecture: MVC pattern untuk separation of concerns
+Styling: Custom CSS-like styling dengan PyQt6</code></pre>
+<p><strong>Step 3: Database Design</strong></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Tabel utama yang dirancang:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tasks: <span class="kw">id</span>, title, description, start_date, end_date, start_time, end_time, status</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>user_profile: <span class="kw">id</span>, fullname, email, student_id, status_type, profile_picture</span></code></pre></div>
+<h3 data-number="1.4.2" id="development-phase"><span
+class="header-section-number">1.4.2</span> 2.2 Development Phase</h3>
+<p><strong>Step 4: Project Structure Setup</strong></p>
+<pre><code>trackerin/
+├── main.py              # Entry point aplikasi
+├── main_window.py       # Main window management
+├── database.py          # Database operations
+├── schedule_page.py     # Schedule management page
+├── profile_page.py      # Profile dan history page
+├── export_page.py       # Data export page
+├── styles.py           # Centralized styling
+└── assets/             # Images dan icons
+    ├── logo.png
+    ├── Frame 182.png
+    └── icons/</code></pre>
+<p><strong>Step 5: Core Components Development</strong></p>
+<p><em>Database Layer Implementation:</em></p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DatabaseHandler:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, db_path: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;trackerin.db&quot;</span>):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.db_path <span class="op">=</span> db_path</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.init_database()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> init_database(<span class="va">self</span>):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create tables dan default data</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_task(<span class="va">self</span>, title, description, start_date, end_date, start_time, end_time):</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># CRUD operations untuk tasks</span></span></code></pre></div>
+<p><em>Main Window Architecture:</em></p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MainWindow(QMainWindow):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize database, UI components, navigation system</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> init_ui(<span class="va">self</span>):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Setup layout, header, stacked widgets untuk pages</span></span></code></pre></div>
+<p><strong>Step 6: Page Components Development</strong></p>
+<p><em>Schedule Page Implementation:</em> - TaskCard component untuk
+individual tasks - Day selector dengan horizontal scrolling - Calendar
+widget integration - Form input dengan validation</p>
+<p><em>Profile Page Implementation:</em> - Activity history table dengan
+sorting - Search dan filter functionality - Inline editing capabilities
+- Profile dock untuk management</p>
+<p><em>Export Page Implementation:</em> - Data preview table - CSV
+export dengan file dialog - Statistics calculation - Error handling
+untuk export process</p>
+<h3 data-number="1.4.3" id="integration-dan-testing-phase"><span
+class="header-section-number">1.4.3</span> 2.3 Integration dan Testing
+Phase</h3>
+<p><strong>Step 7: Component Integration</strong></p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Signal-slot communication setup</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.task_updated.<span class="ex">connect</span>(<span class="va">self</span>.refresh_tasks)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.profile_updated.<span class="ex">connect</span>(<span class="va">self</span>.refresh_header_profile)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Database integration across all components</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.schedule_page <span class="op">=</span> SchedulePage(<span class="va">self</span>.db)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.export_page <span class="op">=</span> ExportPage(<span class="va">self</span>.db)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.profile_page <span class="op">=</span> ProfilePage(<span class="va">self</span>.db)</span></code></pre></div>
+<p><strong>Step 8: Styling dan UI Polish</strong> - Centralized styling
+system dengan styles.py - Color scheme consistency - Responsive layout
+adjustments - Custom icons implementation</p>
+<p><strong>Step 9: Error Handling dan Validation</strong> -
+Comprehensive try-catch blocks - Input validation untuk forms - Database
+error handling - File operation safety checks</p>
+<hr />
+<h2 data-number="1.5" id="penjelasan-fungsi-utama"><span
+class="header-section-number">1.5</span> 3. PENJELASAN FUNGSI UTAMA</h2>
+<h3 data-number="1.5.1" id="database-management-functions"><span
+class="header-section-number">1.5.1</span> 3.1 Database Management
+Functions</h3>
+<p><strong><code>DatabaseHandler</code> Class - Core Database
+Operations</strong></p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_task(<span class="va">self</span>, title: <span class="bu">str</span>, description: <span class="bu">str</span>, start_date: <span class="bu">str</span>, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>             end_date: <span class="bu">str</span>, start_time: <span class="bu">str</span>, end_time: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Fungsi untuk menambah task baru ke database</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - title: Judul aktivitas</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - description: Deskripsi detail</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - start_date/end_date: Tanggal dalam format YYYY-MM-DD</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">    - start_time/end_time: Waktu dalam format HH:MM:SS</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns: Boolean success status</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Implementation:</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">    - Validasi input parameters</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">    - Insert ke table tasks dengan auto-increment ID</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">    - Error handling dengan SQLite exceptions</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_tasks_by_date(<span class="va">self</span>, date: <span class="bu">str</span>) <span class="op">-&gt;</span> List[Dict]:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Mengambil semua tasks untuk tanggal tertentu</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Features:</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - Sorting: Finished tasks di bawah, kemudian by start_time</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - Return format: List of dictionaries dengan complete task data</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Used by: Schedule page untuk daily view</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_task_status(<span class="va">self</span>, task_id: <span class="bu">int</span>, status: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Update status task (Not Yet/Finished)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Usage: TaskCard component untuk mark as done functionality</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Triggers: UI refresh melalui signal-slot mechanism</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<h3 data-number="1.5.2" id="user-interface-management-functions"><span
+class="header-section-number">1.5.2</span> 3.2 User Interface Management
+Functions</h3>
+<p><strong><code>MainWindow</code> Class - Navigation dan Layout
+Management</strong></p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_header(<span class="va">self</span>, main_layout):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Membuat header bar dengan complete navigation system</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Components:</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - Logo aplikasi (dari assets/logo.png)</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - Navigation buttons (Schedule/Export/Profile)</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - User info display dengan profile picture</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - Custom icon loading dengan fallback system</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> setup_navigation_button(<span class="va">self</span>, button, icon_name: <span class="bu">str</span>, text: <span class="bu">str</span>, default_emoji: <span class="bu">str</span>):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Setup navigation button dengan advanced features</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Features:</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - Custom icon loading dari assets/icons/</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - State management (default/clicked icons)</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Emoji fallback jika icons tidak tersedia</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - Hover effects dan checkable states</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_update_status_bar(<span class="va">self</span>):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Update status bar dengan comprehensive error handling</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Information displayed:</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - Current time dengan auto-refresh</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - User information dari database</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Copyright notice</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - Fallback data jika database error</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<h3 data-number="1.5.3" id="task-management-functions"><span
+class="header-section-number">1.5.3</span> 3.3 Task Management
+Functions</h3>
+<p><strong><code>SchedulePage</code> Class - Core Scheduling
+Functionality</strong></p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_day_selector(<span class="va">self</span>, parent_layout):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Membuat horizontal scrollable day selector</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Features:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - 14 hari ke depan dari hari ini</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - Checkable buttons dengan date/month display</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Auto-scroll horizontal functionality</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - Integration dengan calendar widget</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_task(<span class="va">self</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Handler untuk task creation dengan comprehensive validation</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Validation Rules:</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - Empty title check</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - Past date prevention</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - End date &gt;= start date</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - End time &gt; start time (same day)</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Process Flow:</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">    1. Input validation</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">    2. Database insertion</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">    3. Form reset</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co">    4. UI refresh</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co">    5. Success/error notification</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<p><strong><code>TaskCard</code> Component - Individual Task
+Display</strong></p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mark_as_done(<span class="va">self</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Mark task sebagai finished dengan UI updates</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Process:</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">    1. Update database status</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">    2. Update visual status badge</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">    3. Hide action buttons</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">    4. Emit signal untuk parent refresh</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">    5. Show success notification</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<h3 data-number="1.5.4" id="profile-management-functions"><span
+class="header-section-number">1.5.4</span> 3.4 Profile Management
+Functions</h3>
+<p><strong><code>ProfilePage</code> Class - Profile dan History
+Management</strong></p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> edit_task_column(<span class="va">self</span>, item: QTableWidgetItem):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Advanced inline editing dengan column-specific handling</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Supported Operations:</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - Activity name: Text input dengan validation</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - Start/End time: Time format validation (HH:MM:SS)</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Status: Dropdown selection (Not Yet/Finished)</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - Date: Read-only dengan informational message</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Features:</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">    - Double-click activation</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">    - Input dialogs dengan pre-filled values</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - Real-time database updates</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">    - Error handling dengan user feedback</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_profile_image(<span class="va">self</span>, image_path: <span class="bu">str</span>):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Advanced image processing untuk profile pictures</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Process:</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">    1. Image loading dengan error handling</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">    2. Resize ke 100x100 pixels</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">    3. Circular cropping menggunakan QPainter</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">    4. Memory optimization</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">    5. Fallback ke emoji jika gagal</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Technical Implementation:</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">    - QPainter dengan antialiasing</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - QBrush untuk image masking</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co">    - Transparent background handling</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<h3 data-number="1.5.5" id="export-dan-reporting-functions"><span
+class="header-section-number">1.5.5</span> 3.5 Export dan Reporting
+Functions</h3>
+<p><strong><code>ExportPage</code> Class - Data Export
+Management</strong></p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> export_to_csv(<span class="va">self</span>):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Comprehensive CSV export dengan advanced features</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Process Flow:</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">    1. Data validation (check for available tasks)</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">    2. File dialog dengan timestamp naming</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">    3. CSV writing dengan proper headers</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">    4. UTF-8 encoding untuk international characters</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">    5. Success dialog dengan file location info</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Export Fields:</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co">    - Complete task information</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - Calculated duration</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">    - Timestamps</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">    - Status information</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_duration(<span class="va">self</span>, start_time: <span class="bu">str</span>, end_time: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Smart duration calculation dengan edge case handling</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Features:</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - Overnight task support (end &lt; start)</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - Format output: &quot;Xh Ym&quot;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Error handling return &quot;N/A&quot;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - Used across multiple components</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<hr />
+<h2 data-number="1.6" id="arsitektur-dan-komponen"><span
+class="header-section-number">1.6</span> 4. ARSITEKTUR DAN KOMPONEN</h2>
+<h3 data-number="1.6.1" id="application-architecture"><span
+class="header-section-number">1.6.1</span> 4.1 Application
+Architecture</h3>
+<p><strong>MVC Pattern Implementation:</strong></p>
+<pre><code>Model (Data Layer):
+├── DatabaseHandler class
+├── SQLite database operations
+└── Data validation dan business logic
+
+View (Presentation Layer):
+├── MainWindow (navigation container)
+├── SchedulePage (task management UI)
+├── ProfilePage (profile dan history UI)
+├── ExportPage (export interface)
+└── TaskCard (individual task component)
+
+Controller (Logic Layer):
+├── Event handlers
+├── Signal-slot communications
+├── Business logic coordination
+└── User interaction processing</code></pre>
+<h3 data-number="1.6.2" id="component-hierarchy"><span
+class="header-section-number">1.6.2</span> 4.2 Component Hierarchy</h3>
+<pre><code>QApplication (main.py)
+└── MainWindow (main_window.py)
+    ├── Header Bar
+    │   ├── Logo
+    │   ├── Navigation Buttons
+    │   └── User Info Display
+    ├── QStackedWidget (Page Container)
+    │   ├── SchedulePage
+    │   │   ├── Day Selector
+    │   │   ├── Task Cards Area
+    │   │   ├── Calendar Widget
+    │   │   └── Input Form
+    │   ├── ProfilePage
+    │   │   ├── Activity Table
+    │   │   ├── Search Controls
+    │   │   └── Profile Dock Content
+    │   └── ExportPage
+    │       ├── Export Section
+    │       └── Preview Table
+    ├── Menu Bar
+    ├── Status Bar
+    └── Profile Dock Widget</code></pre>
+<h3 data-number="1.6.3" id="data-flow-architecture"><span
+class="header-section-number">1.6.3</span> 4.3 Data Flow
+Architecture</h3>
+<p><strong>Task Creation Flow:</strong></p>
+<pre><code>User Input (Form) → Validation → Database Insert → UI Refresh → Notification</code></pre>
+<p><strong>Task Status Update Flow:</strong></p>
+<pre><code>User Action (TaskCard) → Database Update → Signal Emission → Parent Refresh → UI Update</code></pre>
+<p><strong>Profile Update Flow:</strong></p>
+<pre><code>Profile Form → Validation → Database Update → Signal Emission → Header Refresh → Status Bar Update</code></pre>
+<h3 data-number="1.6.4" id="pyqt6-components-integration"><span
+class="header-section-number">1.6.4</span> 4.4 PyQt6 Components
+Integration</h3>
+<p><strong>Core Components:</strong></p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 25%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QApplication</td>
+<td>Application entry point</td>
+<td>main.py - event loop management</td>
+</tr>
+<tr>
+<td>QMainWindow</td>
+<td>Main application window</td>
+<td>main_window.py - menu/status bar</td>
+</tr>
+<tr>
+<td>QStackedWidget</td>
+<td>Page navigation</td>
+<td>main_window.py - page switching</td>
+</tr>
+<tr>
+<td>QDockWidget</td>
+<td>Profile panel</td>
+<td>main_window.py - dockable sidebar</td>
+</tr>
+<tr>
+<td>QTableWidget</td>
+<td>Data display</td>
+<td>profile_page.py, export_page.py</td>
+</tr>
+<tr>
+<td>QCalendarWidget</td>
+<td>Date selection</td>
+<td>schedule_page.py - visual calendar</td>
+</tr>
+<tr>
+<td>pyqtSignal</td>
+<td>Inter-component communication</td>
+<td>Custom signals untuk real-time updates</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 data-number="1.7" id="interface-dan-fungsionalitas"><span
+class="header-section-number">1.7</span> 5. INTERFACE DAN
+FUNGSIONALITAS</h2>
+<h3 data-number="1.7.1" id="main-window-interface"><span
+class="header-section-number">1.7.1</span> 5.1 Main Window
+Interface</h3>
+<p><strong>Header Section:</strong> - <strong>Logo Area</strong>:
+Trackerin brand logo dengan fallback emoji - <strong>Navigation
+Bar</strong>: - Schedule button (📅 dengan custom icon support) - Export
+button (📊 dengan custom icon support)<br />
+- Profile button (👤 dengan custom icon support) - <strong>User Info
+Panel</strong>: - Circular profile picture dengan real-time updates -
+User name dan status type display - Integration dengan profile data</p>
+<p><strong>Status Bar:</strong> - <strong>Left Section</strong>: Student
+information dengan auto-refresh - <strong>Right Section</strong>:
+Copyright notice - <strong>Auto-Update</strong>: Setiap menit via
+QTimer</p>
+<h3 data-number="1.7.2" id="schedule-page-interface"><span
+class="header-section-number">1.7.2</span> 5.2 Schedule Page
+Interface</h3>
+<p><strong>Day Selector Section:</strong></p>
+<pre><code>[Today] [22] [23] [24] [25] [26] [27] [28] ...
+       Jun  Jun  Jun  Jun  Jun  Jun  Jun</code></pre>
+<ul>
+<li>Horizontal scrollable buttons</li>
+<li>Current date highlighting</li>
+<li>Quick date navigation</li>
+<li>Visual feedback pada selection</li>
+</ul>
+<p><strong>Task Cards Display:</strong></p>
+<pre><code>┌─────────────────────────────────────────────┐
+│ List To-Do                    [Not Yet]     │
+│                                             │
+│ Belajar PyQt6 untuk Final Project          │
+│                                             │
+│ 09:00 AM - 11:00 AM                        │
+│                                             │
+│ [Done]  [Decline]                          │
+└─────────────────────────────────────────────┘</code></pre>
+<p><strong>Calendar Widget:</strong> - Interactive date selection -
+Weekend highlighting (red Sundays) - Integration dengan day selector -
+Visual feedback untuk selected date</p>
+<p><strong>Input Form:</strong></p>
+<pre><code>Form To-Do
+┌─────────────────────────────┐
+│ Start Date: [2025-06-21] ▼ │
+│ End Date:   [2025-06-21] ▼ │
+│ Start Time: [09:00 AM]   ▼ │
+│ End Time:   [11:00 AM]   ▼ │
+│ Activity:   [____________] │
+│                           │
+│         [Submit]          │
+└─────────────────────────────┘</code></pre>
+<h3 data-number="1.7.3" id="profile-page-interface"><span
+class="header-section-number">1.7.3</span> 5.3 Profile Page
+Interface</h3>
+<p><strong>Activity History Table:</strong></p>
+<pre><code>┌──────────┬─────────────────┬──────────┬──────────┬──────────┬────────────┬─────────┐
+│   Date   │    Activity     │Start Time│ End Time │ Duration │   Status   │ Actions │
+├──────────┼─────────────────┼──────────┼──────────┼──────────┼────────────┼─────────┤
+│2025-06-21│ Belajar PyQt6   │  09:00   │  11:00   │   2h 0m  │ [Finished] │[Delete] │
+│2025-06-20│ Meeting Project │  14:00   │  15:30   │   1h 30m │ [Not Yet]  │[Delete] │
+└──────────┴─────────────────┴──────────┴──────────┴──────────┴────────────┴─────────┘</code></pre>
+<p><strong>Search dan Filter Controls:</strong></p>
+<pre><code>[🔽 Filter]  [________________________Search Users________________________]</code></pre>
+<p><strong>Profile Dock Panel:</strong></p>
+<pre><code>Profile View
+┌─────────────────┐
+│                 │
+│    [👤 Photo]   │  ← Circular profile picture
+│                 │
+└─────────────────┘
+    User Name
+[Change Profile]
+
+Set My Profile
+┌─────────────────┐
+│ Fullname: [...] │
+│ Email: [...]    │
+│ Student ID:[...] │
+│ Status: [▼]     │
+│    [Submit]     │
+└─────────────────┘</code></pre>
+<h3 data-number="1.7.4" id="export-page-interface"><span
+class="header-section-number">1.7.4</span> 5.4 Export Page
+Interface</h3>
+<p><strong>Export Section:</strong></p>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│              Background Image/Gradient                      │
+│                                                             │
+│                    [✓ Let&#39;s Do it!]                        │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>Data Preview Table:</strong></p>
+<pre><code>Data Preview
+Preview of data that will be exported:
+
+┌──────────┬─────────────────┬──────────┬──────────┬──────────┬────────────┬───────────┐
+│   Date   │    Activity     │Start Time│ End Time │ Duration │   Status   │  Created  │
+├──────────┼─────────────────┼──────────┼──────────┼──────────┼────────────┼───────────┤
+│2025-06-21│ Belajar PyQt6   │  09:00   │  11:00   │   2h 0m  │ [Finished] │2025-06-21 │
+└──────────┴─────────────────┴──────────┴──────────┴──────────┴────────────┴───────────┘
+
+Total: 15 tasks | Completed: 8 | Pending: 7</code></pre>
+<h3 data-number="1.7.5" id="interactive-features"><span
+class="header-section-number">1.7.5</span> 5.5 Interactive Features</h3>
+<p><strong>Double-Click Editing:</strong> - Click pada Activity cell →
+Text input dialog - Click pada Time cells → Time format validation -
+Click pada Status cell → Dropdown selection - Real-time database
+updates</p>
+<p><strong>Drag dan Drop Support:</strong> - Profile picture upload via
+file dialog - Multiple file format support (PNG, JPG, JPEG, GIF,
+BMP)</p>
+<p><strong>Keyboard Shortcuts:</strong> - Ctrl+N: New task (focus ke
+activity input) - Ctrl+E: Export page - Ctrl+V: Paste clipboard content
+- Ctrl+Q: Exit application - F1: About dialog</p>
+<p><strong>Signal-Slot Communications:</strong></p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Real-time updates tanpa page refresh</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>task_updated.<span class="ex">connect</span>(refresh_tasks)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>profile_updated.<span class="ex">connect</span>(refresh_header_profile)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>date_changed.<span class="ex">connect</span>(update_form_dates)</span></code></pre></div>
+<hr />
+<h2 data-number="1.8" id="implementasi-database"><span
+class="header-section-number">1.8</span> 6. IMPLEMENTASI DATABASE</h2>
+<h3 data-number="1.8.1" id="database-schema-design"><span
+class="header-section-number">1.8.1</span> 6.1 Database Schema
+Design</h3>
+<p><strong>Table: tasks</strong></p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> tasks (</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    title TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    description TEXT,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    start_date <span class="dt">DATE</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    end_date <span class="dt">DATE</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    start_time <span class="dt">TIME</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    end_time <span class="dt">TIME</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    status TEXT <span class="kw">DEFAULT</span> <span class="st">&#39;Not Yet&#39;</span>,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    created_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span>,</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    updated_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p><strong>Table: user_profile</strong></p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> user_profile (</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    fullname TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    email TEXT,</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    student_id TEXT,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    status_type TEXT <span class="kw">DEFAULT</span> <span class="st">&#39;Student&#39;</span>,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    profile_picture TEXT,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    created_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    updated_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<h3 data-number="1.8.2" id="crud-operations-implementation"><span
+class="header-section-number">1.8.2</span> 6.2 CRUD Operations
+Implementation</h3>
+<p><strong>Create Operations:</strong></p>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_task(<span class="va">self</span>, title, description, start_date, end_date, start_time, end_time):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> sqlite3.<span class="ex">connect</span>(<span class="va">self</span>.db_path) <span class="im">as</span> conn:</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>            cursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(<span class="st">&#39;&#39;&#39;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="st">                INSERT INTO tasks (title, description, start_date, end_date, start_time, end_time)</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="st">                VALUES (?, ?, ?, ?, ?, ?)</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="st">            &#39;&#39;&#39;</span>, (title, description, start_date, end_date, start_time, end_time))</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>            conn.commit()</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> sqlite3.Error <span class="im">as</span> e:</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Error adding task: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span></code></pre></div>
+<p><strong>Read Operations dengan Advanced Sorting:</strong></p>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_tasks_by_date(<span class="va">self</span>, date):</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    cursor.execute(<span class="st">&#39;&#39;&#39;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="st">        SELECT id, title, description, start_date, end_date, start_time, end_time, status</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="st">        FROM tasks </span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="st">        WHERE start_date = ? </span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="st">        ORDER BY </span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="st">            CASE status </span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="st">                WHEN &#39;Finished&#39; THEN 0 </span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="st">                ELSE 1 </span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="st">            END,</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="st">            start_time</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="st">    &#39;&#39;&#39;</span>, (date,))</span></code></pre></div>
+<p><strong>Update Operations dengan Timestamp:</strong></p>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_task_status(<span class="va">self</span>, task_id, status):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    cursor.execute(<span class="st">&#39;&#39;&#39;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="st">        UPDATE tasks </span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="st">        SET status = ?, updated_at = CURRENT_TIMESTAMP </span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="st">        WHERE id = ?</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="st">    &#39;&#39;&#39;</span>, (status, task_id))</span></code></pre></div>
+<p><strong>Search Operations dengan LIKE Pattern:</strong></p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_tasks(<span class="va">self</span>, search_term):</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    cursor.execute(<span class="st">&#39;&#39;&#39;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="st">        SELECT id, title, description, start_date, end_date, start_time, end_time, status, created_at</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="st">        FROM tasks </span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="st">        WHERE title LIKE ? OR description LIKE ?</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="st">        ORDER BY start_date DESC, start_time</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="st">    &#39;&#39;&#39;</span>, (<span class="ss">f&#39;%</span><span class="sc">{</span>search_term<span class="sc">}</span><span class="ss">%&#39;</span>, <span class="ss">f&#39;%</span><span class="sc">{</span>search_term<span class="sc">}</span><span class="ss">%&#39;</span>))</span></code></pre></div>
+<h3 data-number="1.8.3" id="database-connection-management"><span
+class="header-section-number">1.8.3</span> 6.3 Database Connection
+Management</h3>
+<p><strong>Connection Pooling dengan Context Manager:</strong></p>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_database_operation(<span class="va">self</span>, operation_func):</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> sqlite3.<span class="ex">connect</span>(<span class="va">self</span>.db_path) <span class="im">as</span> conn:</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>            cursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> operation_func(cursor)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>            conn.commit()</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> result</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> sqlite3.Error <span class="im">as</span> e:</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Database error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div>
+<p><strong>Transaction Management:</strong></p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatic transaction handling dengan try-catch</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Rollback otomatis jika error</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Connection cleanup dengan context manager</span></span></code></pre></div>
+<h3 data-number="1.8.4" id="data-validation-dan-integrity"><span
+class="header-section-number">1.8.4</span> 6.4 Data Validation dan
+Integrity</h3>
+<p><strong>Input Validation:</strong> - Date format validation
+(YYYY-MM-DD) - Time format validation (HH:MM:SS) - Required field checks
+- SQL injection prevention dengan prepared statements</p>
+<p><strong>Business Logic Validation:</strong> - Past date prevention
+untuk new tasks - End date &gt;= start date validation - Time logic
+validation (end time &gt; start time) - Duplicate prevention untuk
+critical data</p>
+<hr />
+<h2 data-number="1.9" id="styling-dan-user-experience"><span
+class="header-section-number">1.9</span> 7. STYLING DAN USER
+EXPERIENCE</h2>
+<h3 data-number="1.9.1" id="design-system"><span
+class="header-section-number">1.9.1</span> 7.1 Design System</h3>
+<p><strong>Color Palette:</strong></p>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>COLORS <span class="op">=</span> {</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;primary&#39;</span>: <span class="st">&#39;#0E2C75&#39;</span>,           <span class="co"># Professional blue</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;secondary&#39;</span>: <span class="st">&#39;#f8f9fa&#39;</span>,         <span class="co"># Light gray background</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;success&#39;</span>: <span class="st">&#39;#28a745&#39;</span>,           <span class="co"># Green untuk success states</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;danger&#39;</span>: <span class="st">&#39;#dc3545&#39;</span>,            <span class="co"># Red untuk delete/error</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;warning&#39;</span>: <span class="st">&#39;#ffc107&#39;</span>,           <span class="co"># Yellow untuk warnings</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;text_primary&#39;</span>: <span class="st">&#39;#2c3e50&#39;</span>,      <span class="co"># Dark text</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;text_secondary&#39;</span>: <span class="st">&#39;#6c757d&#39;</span>,    <span class="co"># Light text</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;border&#39;</span>: <span class="st">&#39;#dee2e6&#39;</span>,            <span class="co"># Subtle borders</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;finished_bg&#39;</span>: <span class="st">&#39;#d4edda&#39;</span>,       <span class="co"># Green background untuk completed</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;not_yet_bg&#39;</span>: <span class="st">&#39;#f8d7da&#39;</span>,        <span class="co"># Red background untuk pending</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Typography System:</strong> - <strong>Headers</strong>: Bold,
+larger font sizes untuk titles - <strong>Body Text</strong>: Regular
+weight, optimal line height - <strong>Platform Fonts</strong>: - macOS:
+Helvetica Neue → Arial → System - Windows: Segoe UI → Arial - Linux:
+Ubuntu → DejaVu Sans → Arial</p>
+<h3 data-number="1.9.2" id="component-styling"><span
+class="header-section-number">1.9.2</span> 7.2 Component Styling</h3>
+<p><strong>Navigation Buttons:</strong></p>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>QPushButton<span class="co">#navButton {</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    background<span class="op">-</span>color: transparent<span class="op">;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    border: none<span class="op">;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    color: <span class="co">#6c757d;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    font<span class="op">-</span>size: <span class="dv">16</span><span class="er">px</span><span class="op">;</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    font<span class="op">-</span>weight: <span class="dv">500</span><span class="op">;</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    padding: <span class="dv">12</span><span class="er">px</span> <span class="dv">20</span><span class="er">px</span><span class="op">;</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    margin: <span class="dv">5</span><span class="er">px</span><span class="op">;</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    border<span class="op">-</span>radius: <span class="dv">8</span><span class="er">px</span><span class="op">;</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span><span class="op">-</span>width: <span class="dv">100</span><span class="er">px</span><span class="op">;</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>QPushButton<span class="co">#navButton:hover {</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    background<span class="op">-</span>color: <span class="co">#f8f9fa;</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    color: <span class="co">#2c3e50;</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>QPushButton<span class="co">#navButton:checked {</span></span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    background<span class="op">-</span>color: <span class="co">#0E2C75;</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>    color: <span class="co">#ffffff;</span></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Task Cards:</strong></p>
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>QFrame<span class="co">#taskCard {</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    background<span class="op">-</span>color: <span class="co">#ffffff;</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    border: <span class="dv">1</span><span class="er">px</span> solid <span class="co">#dee2e6;</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    border<span class="op">-</span>radius: <span class="dv">15</span><span class="er">px</span><span class="op">;</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    padding: <span class="dv">15</span><span class="er">px</span><span class="op">;</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    margin: <span class="dv">8</span><span class="er">px</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Tables dengan Alternate Row Colors:</strong></p>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>QTableWidget {</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    gridline<span class="op">-</span>color: <span class="co">#dee2e6;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    background<span class="op">-</span>color: <span class="co">#ffffff;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    alternate<span class="op">-</span>background<span class="op">-</span>color: <span class="co">#f8f9fa;</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    border: none<span class="op">;</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 data-number="1.9.3" id="responsive-design"><span
+class="header-section-number">1.9.3</span> 7.3 Responsive Design</h3>
+<p><strong>Layout Adaptivity:</strong> - Fixed width untuk main
+components (consistency) - Flexible height dengan scroll areas - Minimum
+window size constraints - Proper widget spacing dan margins</p>
+<p><strong>Content Scaling:</strong> - Icon scaling berdasarkan widget
+size - Font scaling untuk different screen densities - Image processing
+dengan aspect ratio preservation</p>
+<h3 data-number="1.9.4" id="user-experience-enhancements"><span
+class="header-section-number">1.9.4</span> 7.4 User Experience
+Enhancements</h3>
+<p><strong>Visual Feedback:</strong> - Hover effects pada interactive
+elements - Loading states untuk database operations - Color coding untuk
+status indicators - Animation hints dengan CSS transitions</p>
+<p><strong>Accessibility Features:</strong> - High contrast color
+combinations - Keyboard navigation support - Screen reader friendly
+markup - Focus indicators yang jelas</p>
+<p><strong>Error Prevention:</strong> - Input validation dengan
+real-time feedback - Confirmation dialogs untuk destructive actions -
+Undo capabilities dimana applicable - Clear error messages dengan
+actionable solutions</p>
+<hr />
+<h2 data-number="1.10" id="testing-dan-debugging"><span
+class="header-section-number">1.10</span> 8. TESTING DAN DEBUGGING</h2>
+<h3 data-number="1.10.1" id="testing-strategy"><span
+class="header-section-number">1.10.1</span> 8.1 Testing Strategy</h3>
+<p><strong>Unit Testing Approach:</strong></p>
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Database function testing</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_add_task():</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> DatabaseHandler(<span class="st">&quot;:memory:&quot;</span>)  <span class="co"># In-memory database untuk testing</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> db.add_task(<span class="st">&quot;Test Task&quot;</span>, <span class="st">&quot;Description&quot;</span>, <span class="st">&quot;2025-06-21&quot;</span>, <span class="st">&quot;2025-06-21&quot;</span>, <span class="st">&quot;09:00:00&quot;</span>, <span class="st">&quot;11:00:00&quot;</span>)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> result <span class="op">==</span> <span class="va">True</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    tasks <span class="op">=</span> db.get_tasks_by_date(<span class="st">&quot;2025-06-21&quot;</span>)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(tasks) <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> tasks[<span class="dv">0</span>][<span class="st">&#39;title&#39;</span>] <span class="op">==</span> <span class="st">&quot;Test Task&quot;</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co"># UI component testing</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_task_card_creation():</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    task_data <span class="op">=</span> {</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;id&#39;</span>: <span class="dv">1</span>,</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;title&#39;</span>: <span class="st">&#39;Test Task&#39;</span>,</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;status&#39;</span>: <span class="st">&#39;Not Yet&#39;</span>,</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;start_time&#39;</span>: <span class="st">&#39;09:00:00&#39;</span>,</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;end_time&#39;</span>: <span class="st">&#39;11:00:00&#39;</span></span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>    card <span class="op">=</span> TaskCard(task_data, db)</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> card.task_data[<span class="st">&#39;title&#39;</span>] <span class="op">==</span> <span class="st">&#39;Test Task&#39;</span></span></code></pre></div>
+<p><strong>Integration Testing:</strong></p>
+<div class="sourceCode" id="cb48"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Signal-slot communication testing</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_task_update_signal():</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    schedule_page <span class="op">=</span> SchedulePage(db)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    task_card <span class="op">=</span> TaskCard(task_data, db)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    signal_received <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> on_task_updated():</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">nonlocal</span> signal_received</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>        signal_received <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    task_card.task_updated.<span class="ex">connect</span>(on_task_updated)</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    task_card.mark_as_done()</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> signal_received <span class="op">==</span> <span class="va">True</span></span></code></pre></div>
+<h3 data-number="1.10.2" id="error-handling-implementation"><span
+class="header-section-number">1.10.2</span> 8.2 Error Handling
+Implementation</h3>
+<p><strong>Database Error Handling:</strong></p>
+<div class="sourceCode" id="cb49"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_database_operation(<span class="va">self</span>, operation):</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> sqlite3.<span class="ex">connect</span>(<span class="va">self</span>.db_path) <span class="im">as</span> conn:</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>            cursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> operation(cursor)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>            conn.commit()</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> result</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> sqlite3.Error <span class="im">as</span> e:</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Database error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Unexpected error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div>
+<p><strong>File Operation Error Handling:</strong></p>
+<div class="sourceCode" id="cb50"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_profile_image(<span class="va">self</span>, image_path):</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> os.path.exists(image_path):</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">&quot;👤&quot;</span>  <span class="co"># Emoji fallback</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>        pixmap <span class="op">=</span> QPixmap(image_path)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> pixmap.isNull():</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">&quot;👤&quot;</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Process image...</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> processed_pixmap</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Error loading profile image: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;👤&quot;</span></span></code></pre></div>
+<p><strong>Input Validation:</strong></p>
+<div class="sourceCode" id="cb51"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_task_input(<span class="va">self</span>, title, start_date, end_date, start_time, end_time):</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    errors <span class="op">=</span> []</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> title.strip():</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>        errors.append(<span class="st">&quot;Activity title is required&quot;</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> datetime.strptime(start_date, <span class="st">&#39;%Y-%m-</span><span class="sc">%d</span><span class="st">&#39;</span>).date() <span class="op">&lt;</span> datetime.now().date():</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>        errors.append(<span class="st">&quot;Start date cannot be in the past&quot;</span>)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> start_date <span class="op">==</span> end_date <span class="kw">and</span> start_time <span class="op">&gt;=</span> end_time:</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>        errors.append(<span class="st">&quot;End time must be after start time&quot;</span>)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> errors</span></code></pre></div>
+<h3 data-number="1.10.3" id="debugging-tools-dan-techniques"><span
+class="header-section-number">1.10.3</span> 8.3 Debugging Tools dan
+Techniques</h3>
+<p><strong>Logging Implementation:</strong></p>
+<div class="sourceCode" id="cb52"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    level<span class="op">=</span>logging.DEBUG,</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(levelname)s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">&#39;</span>,</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    handlers<span class="op">=</span>[</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>        logging.FileHandler(<span class="st">&#39;trackerin.log&#39;</span>),</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>        logging.StreamHandler()</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> debug_database_operation(<span class="va">self</span>, operation_name, <span class="op">*</span>args):</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>    logging.debug(<span class="ss">f&quot;Database operation: </span><span class="sc">{</span>operation_name<span class="sc">}</span><span class="ss"> with args: </span><span class="sc">{</span>args<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Debug Helpers:</strong></p>
+<div class="sourceCode" id="cb53"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_widget_hierarchy(widget, level<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Debug helper untuk print widget tree&quot;&quot;&quot;</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    indent <span class="op">=</span> <span class="st">&quot;  &quot;</span> <span class="op">*</span> level</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>indent<span class="sc">}{</span>widget<span class="sc">.</span><span class="va">__class__</span><span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>widget<span class="sc">.</span>objectName()<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> child <span class="kw">in</span> widget.children():</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(child, <span class="st">&#39;children&#39;</span>):</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>            print_widget_hierarchy(child, level <span class="op">+</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><strong>Performance Monitoring:</strong></p>
+<div class="sourceCode" id="cb54"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> wraps</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> timing_decorator(func):</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@wraps</span>(func)</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>        start_time <span class="op">=</span> time.time()</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>        end_time <span class="op">=</span> time.time()</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss"> took </span><span class="sc">{</span>end_time <span class="op">-</span> start_time<span class="sc">:.4f}</span><span class="ss"> seconds&quot;</span>)</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="at">@timing_decorator</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> refresh_tasks(<span class="va">self</span>):</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Function implementation</span></span></code></pre></div>
+<h3 data-number="1.10.4" id="common-issues-dan-solutions"><span
+class="header-section-number">1.10.4</span> 8.4 Common Issues dan
+Solutions</h3>
+<p><strong>Issue 1: Database Lock</strong></p>
+<div class="sourceCode" id="cb55"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Problem: Database locked ketika multiple operations</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Solution: Proper connection management dengan context manager</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> sqlite3.<span class="ex">connect</span>(<span class="va">self</span>.db_path) <span class="im">as</span> conn:</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Operations here</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span>  <span class="co"># Automatic connection cleanup</span></span></code></pre></div>
+<p><strong>Issue 2: Memory Leaks dengan QPixmap</strong></p>
+<div class="sourceCode" id="cb56"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Problem: QPixmap objects tidak ter-cleanup</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Solution: Explicit memory management</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cleanup_pixmaps(<span class="va">self</span>):</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> pixmap <span class="kw">in</span> <span class="va">self</span>.cached_pixmaps:</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> pixmap</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.cached_pixmaps.clear()</span></code></pre></div>
+<p><strong>Issue 3: Signal Connection Duplication</strong></p>
+<div class="sourceCode" id="cb57"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Problem: Multiple signal connections</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Solution: Disconnect before connecting</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.task_updated.disconnect()</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span>  <span class="co"># No connections to disconnect</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.task_updated.<span class="ex">connect</span>(<span class="va">self</span>.refresh_tasks)</span></code></pre></div>
+<hr />
+<h2 data-number="1.11" id="kesimpulan-dan-future-development"><span
+class="header-section-number">1.11</span> 9. KESIMPULAN DAN FUTURE
+DEVELOPMENT</h2>
+<h3 data-number="1.11.1" id="project-summary"><span
+class="header-section-number">1.11.1</span> 9.1 Project Summary</h3>
+<p><strong>Achievements:</strong> - ✅ <strong>Functional Task
+Management System</strong>: Complete CRUD operations untuk tasks - ✅
+<strong>Modern User Interface</strong>: PyQt6-based GUI dengan
+responsive design - ✅ <strong>Data Persistence</strong>: SQLite
+database dengan robust error handling - ✅ <strong>Export
+Capabilities</strong>: CSV export dengan comprehensive data - ✅
+<strong>Profile Management</strong>: User profiles dengan photo upload -
+✅ <strong>Cross-Platform Compatibility</strong>: Runs on Windows,
+macOS, dan Linux</p>
+<p><strong>Technical Accomplishments:</strong> - <strong>MVC
+Architecture</strong>: Clean separation of concerns -
+<strong>Signal-Slot Pattern</strong>: Real-time UI updates tanpa tight
+coupling - <strong>Database Abstraction</strong>: Centralized data
+operations - <strong>Error Handling</strong>: Comprehensive exception
+management - <strong>Responsive Design</strong>: Adaptive layouts untuk
+different screen sizes</p>
+<h3 data-number="1.11.2" id="lessons-learned"><span
+class="header-section-number">1.11.2</span> 9.2 Lessons Learned</h3>
+<p><strong>Development Insights:</strong> 1. <strong>PyQt6 Learning
+Curve</strong>: Widget management dan styling memerlukan deep
+understanding 2. <strong>Database Design</strong>: Proper schema design
+crucial untuk performance 3. <strong>Signal-Slot
+Communications</strong>: Powerful untuk loose coupling tapi perlu
+careful management 4. <strong>Error Handling</strong>: Comprehensive
+error handling essential untuk user experience 5. <strong>Testing
+Strategy</strong>: Early testing prevents integration issues</p>
+<p><strong>Technical Challenges Overcome:</strong> - <strong>Image
+Processing</strong>: Circular cropping dengan QPainter -
+<strong>Calendar Integration</strong>: Multiple date selection methods
+synchronization - <strong>Table Management</strong>: Dynamic content
+dengan custom widgets - <strong>File Operations</strong>: Safe file
+handling dengan proper validation - <strong>Memory Management</strong>:
+Proper widget cleanup dan resource management</p>
+<h3 data-number="1.11.3" id="future-development-roadmap"><span
+class="header-section-number">1.11.3</span> 9.3 Future Development
+Roadmap</h3>
+<p><strong>Version 1.2 - Enhanced UI/UX</strong> - 🔄 <strong>Dark Mode
+Toggle</strong>: Complete theme switching system - 🔄 <strong>Animation
+System</strong>: Smooth transitions antara pages - 🔄
+<strong>Notification System</strong>: Desktop notifications untuk task
+reminders - 🔄 <strong>Drag &amp; Drop</strong>: Task reordering dan
+file upload improvements</p>
+<p><strong>Version 1.3 - Advanced Features</strong> - 🔄 <strong>Export
+Formats</strong>: PDF, Excel, dan JSON export options - 🔄 <strong>Task
+Categories</strong>: Color-coded task categorization - 🔄 <strong>Time
+Tracking</strong>: Actual time spent vs estimated time - 🔄
+<strong>Statistics Dashboard</strong>: Advanced analytics dan charts</p>
+<p><strong>Version 1.4 - Collaboration Features</strong> - 🔄
+<strong>Multi-User Support</strong>: Shared tasks dan collaborative
+features - 🔄 <strong>Cloud Sync</strong>: Data synchronization across
+devices - 🔄 <strong>API Integration</strong>: Calendar sync (Google
+Calendar, Outlook) - 🔄 <strong>Team Management</strong>: Group projects
+dan assignments</p>
+<p><strong>Version 1.5 - Mobile Integration</strong> - 🔄 <strong>Mobile
+Companion</strong>: Android/iOS app untuk quick task entry - 🔄
+<strong>Web Interface</strong>: Browser-based access untuk remote usage
+- 🔄 <strong>REST API</strong>: Backend API untuk third-party
+integrations - 🔄 <strong>Real-time Sync</strong>: Live data
+synchronization</p>
+<h3 data-number="1.11.4"
+id="performance-optimization-opportunities"><span
+class="header-section-number">1.11.4</span> 9.4 Performance Optimization
+Opportunities</h3>
+<p><strong>Database Optimization:</strong> - Indexing untuk faster
+queries - Connection pooling untuk multiple users - Query optimization
+untuk large datasets - Background data operations</p>
+<p><strong>UI Performance:</strong> - Virtual scrolling untuk large task
+lists - Lazy loading untuk images - Cached rendering untuk improved
+responsiveness - Memory usage optimization</p>
+<p><strong>Code Quality Improvements:</strong> - Type hints enforcement
+- Documentation completeness - Unit test coverage expansion - Code
+review process implementation</p>
+<h3 data-number="1.11.5" id="final-recommendations"><span
+class="header-section-number">1.11.5</span> 9.5 Final
+Recommendations</h3>
+<p><strong>For Developers:</strong> 1. <strong>Start with Simple
+Features</strong>: Build core functionality first 2. <strong>Invest in
+Architecture</strong>: Proper structure pays off in maintenance 3.
+<strong>Test Early dan Often</strong>: Unit tests prevent regression
+issues 4. <strong>User Feedback</strong>: Regular testing dengan actual
+users 5. <strong>Documentation</strong>: Keep code dan API documentation
+updated</p>
+<p><strong>For Users:</strong> 1. <strong>Regular Backups</strong>:
+Export data regularly untuk safety 2. <strong>Feature Requests</strong>:
+Submit feedback untuk improvements 3. <strong>Bug Reports</strong>:
+Detailed reports help quick fixes 4. <strong>Community</strong>: Share
+tips dan workflows dengan other users</p>
+<p><strong>Project Impact:</strong> Trackerin demonstrates successful
+implementation of modern desktop application development dengan Python
+dan PyQt6. The project showcases: - Professional-grade UI development -
+Database integration best practices - Cross-platform compatibility -
+User-centered design principles - Scalable architecture patterns</p>
+<p><strong>Educational Value:</strong> This project serves as excellent
+reference untuk: - PyQt6 application development - SQLite database
+integration - Python project structure - GUI design principles -
+Software engineering best practices</p>
+<hr />
+<p><strong>AKHIR LAPORAN</strong></p>
+<p><em>Laporan ini mendokumentasikan complete development process dari
+Trackerin application, dari initial planning hingga final
+implementation. Project ini mendemonstrasikan successful integration
+dari modern Python technologies untuk create functional dan
+user-friendly desktop application.</em></p>
+<p><strong>Total Lines of Code:</strong> ~2,500+ lines<br />
+<strong>Development Time:</strong> Multiple development cycles<br />
+<strong>Technologies Used:</strong> Python 3.8+, PyQt6, SQLite, CSS-like
+styling<br />
+<strong>Platform Support:</strong> Windows, macOS, Linux</p>
+<hr />
+<p>*© 2025 Tim Trackerin - Muhamad Erwin Hariadinata | F1D022065</p>
+</body>
+</html>

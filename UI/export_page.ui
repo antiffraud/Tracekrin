@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ExportPage</class>
+ <widget class="QWidget" name="ExportPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Halaman Ekspor</string>
+  </property>
+  <layout class="QVBoxLayout" name="main_layout">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>15</number>
+   </property>
+   <property name="topMargin">
+    <number>15</number>
+   </property>
+   <property name="rightMargin">
+    <number>15</number>
+   </property>
+   <property name="bottomMargin">
+    <number>15</number>
+   </property>
+   <item>
+    <!-- Judul Halaman -->
+    <widget class="QLabel" name="title_label">
+     <property name="text">
+      <string>Ekspor Data</string>
+     </property>
+     <property name="styleSheet">
+      <string>QLabel {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <!-- Bagian Ekspor -->
+    <widget class="QFrame" name="export_frame">
+     <property name="objectName">
+      <string>exportSection</string>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>180</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string>QFrame#exportSection {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                stop:0 #e3f2fd, stop:1 #bbdefb);
+    border-radius: 16px;
+    border: 2px solid #dee2e6;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <layout class="QVBoxLayout" name="export_layout">
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>15</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>15</number>
+      </property>
+      <item>
+       <spacer name="export_top_spacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <!-- Judul Ekspor -->
+       <widget class="QLabel" name="export_title_label">
+        <property name="text">
+         <string>Apakah Anda ingin mengekspor ke CSV?</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string>QLabel {
+    font-size: 22px; 
+    font-weight: bold; 
+    color: #2c3e50;
+    margin-bottom: 5px;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <!-- Subjudul Ekspor -->
+       <widget class="QLabel" name="export_subtitle_label">
+        <property name="text">
+         <string>Klik tombol di bawah dan pilih tempat untuk menyimpan file CSV ini</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string>QLabel {
+    font-size: 14px; 
+    color: #495057; 
+    margin-bottom: 10px;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="export_middle_spacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>10</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <!-- Layout Tombol Ekspor -->
+       <layout class="QHBoxLayout" name="export_button_layout">
+        <item>
+         <spacer name="export_button_left_spacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <!-- Tombol Ekspor -->
+         <widget class="QPushButton" name="export_button">
+          <property name="text">
+           <string>✓ Ayo Lakukan!</string>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string>QPushButton {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #218838;
+}
+QPushButton:pressed {
+    background-color: #1e7e34;
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="export_button_right_spacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <!-- Bagian Pratinjau Data -->
+    <widget class="QGroupBox" name="preview_group">
+     <property name="styleSheet">
+      <string>QGroupBox {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding-top: 8px;
+    margin-top: 3px;
+    background-color: #ffffff;
+}</string>
+     </property>
+     <layout class="QVBoxLayout" name="preview_layout">
+      <property name="spacing">
+       <number>2</number>
+      </property>
+      <item>
+       <!-- Judul Pratinjau Data -->
+       <widget class="QLabel" name="preview_heading">
+        <property name="text">
+         <string>Pratinjau Data</string>
+        </property>
+        <property name="styleSheet">
+         <string>QLabel {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0px;
+    padding: 2px 0;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <!-- Info Label -->
+       <widget class="QLabel" name="info_label">
+        <property name="text">
+         <string>Pratinjau data yang akan diekspor:</string>
+        </property>
+        <property name="styleSheet">
+         <string>QLabel {
+    color: #6c757d; 
+    font-size: 12px; 
+    margin-bottom: 3px; 
+    margin-top: 0px;
+    padding: 0px;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <!-- Tabel Pratinjau -->
+       <widget class="QTableWidget" name="preview_table">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>220</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>220</height>
+         </size>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="sortingEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="columnCount">
+         <number>7</number>
+        </property>
+        <property name="styleSheet">
+         <string>QTableWidget {
+    gridline-color: #dee2e6;
+    background-color: #ffffff;
+    alternate-background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    font-size: 12pt;
+}
+QTableWidget::item {
+    padding: 8px 6px;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 12pt;
+}
+QTableWidget::item:selected {
+    background-color: #007bff;
+    color: white;
+}
+QTableWidget QHeaderView { 
+    background-color: #e9ecef;
+    font-size: 12pt;
+}
+QTableWidget QHeaderView::section { 
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 10px 8px; 
+    border: 1px solid #dee2e6; 
+    font-weight: bold;
+    font-size: 12pt;
+    min-height: 30px;
+    text-align: center;
+}
+QTableWidget QHeaderView::section:hover {
+    background-color: #dee2e6;
+}
+QTableWidget QHeaderView::section:pressed {
+    background-color: #ced4da;
+}
+QTableWidget QHeaderView[orientation="1"]::section {
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    min-width: 35px;
+}
+QTableWidget QTableCornerButton::section {
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+}</string>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>true</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>Tanggal</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Aktivitas</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Waktu Mulai</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Waktu Berakhir</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Durasi</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Status</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dibuat</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <!-- Label Statistik -->
+       <widget class="QLabel" name="stats_label">
+        <property name="text">
+         <string>Total: 0 tugas | Selesai: 0 | Tertunda: 0</string>
+        </property>
+        <property name="styleSheet">
+         <string>QLabel {
+    color: #495057; 
+    font-size: 11px; 
+    margin-top: 3px;
+}</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
